@@ -32,12 +32,12 @@ $ kvadr <A> <B> <C> <Prec>
 
 **Examples:**
 
-To solve x^2 - 4 = 0         with precision 0.01
+To solve x^2 - 4 = 0 with precision 0.01
 ```
 $ kvadr 1 0 -4 2  
 ```
 
-To solve 5*x^2 + 2*x - 1 = 0 with precision 0.001:
+To solve 5x<sup>2</sup> + 2x - 1 = 0 with precision 0.001:
 ```
 $ kvadr 5 2 -1 3 
 ```
