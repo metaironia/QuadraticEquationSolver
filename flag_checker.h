@@ -32,7 +32,7 @@ struct AllFlags {
     @param [in] argc a number of command line arguments.
     @param [in] *FlagsForCmd the pointer to AllFlags struct.
 */
-void FlagChecker (char *argv[], int argc, AllFlags *FlagsForCmd);
+void FlagChecker (char *const argv[], const int argc, AllFlags *const FlagsForCmd);
 
 /**
     @}

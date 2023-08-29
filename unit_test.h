@@ -18,7 +18,7 @@ enum UnitTestConsts {
 };
 
 /// This is the number of unit tests.
-const int MAX_NUMBER_TEST = 4;
+const int MAX_NUMBER_TEST = 6;
 
 /// This is the max length of string of user's answer when unit test was run.
 const int STR_LEN = 2;
@@ -44,7 +44,7 @@ struct UnitArgsStruct {
     @return 0 if unit test was run, -1 if unit test was not run
     @see UnitTestInput(), TestOne(), TestAll(), UnitTestOutput()
 */
-int UnitTestMain (void *storage);
+int UnitTestMain (void *const storage);
 
 /**
     Function that run one unit test.
@@ -53,7 +53,7 @@ int UnitTestMain (void *storage);
     @param [in, out] *test_state the pointer to UnitTestConsts struct.
     @see TestAll()
 */
-void TestOne (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test_state);
+void TestOne (UnitArgsStruct *const arg_storage, const int test_number, UnitTestConsts *const test_state);
 
 /**
     Function that run all unit tests.
@@ -62,7 +62,7 @@ void TestOne (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test
     @param [in, out] *test_state the pointer to UnitTestConsts struct.
     @see TestOne()
 */
-void TestAll (UnitArgsStruct *arg_storage, UnitTestConsts *test_state);
+void TestAll (UnitArgsStruct *const arg_storage, UnitTestConsts *const test_state);
 /**
     @}
 */

@@ -23,7 +23,7 @@ struct HelpArgsStruct {};
     @attention This function has type "int" because of FlagChecker() requires it.
     @see FlagChecker()
 */
-int HelpOutput (void *storage);
+int HelpOutput (void *const storage);
 
 /**
     @}

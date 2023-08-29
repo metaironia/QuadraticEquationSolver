@@ -67,7 +67,7 @@ int IsDoubleBigger (const double number_1, const double number_2);
     @param [in, out] CoeffAndRoots struct
     @return RootsQuantity number of roots of linear equation.
 */
-enum RootsQuantity LinearSolve (struct CoeffAndRoots *EqMathCoeffs);
+enum RootsQuantity LinearSolve (struct CoeffAndRoots *const EqMathCoeffs);
 
 /**
     Function that solves any cases of the quadratic equation.
@@ -75,7 +75,7 @@ enum RootsQuantity LinearSolve (struct CoeffAndRoots *EqMathCoeffs);
     @return RootsQuantity number of roots of quadratic equation.
     @see LinearSolve()
 */
-enum RootsQuantity EqSolver (struct CoeffAndRoots *EqMathCoeffs);
+enum RootsQuantity EqSolver (struct CoeffAndRoots *const EqMathCoeffs);
 
 /**
     @}

@@ -16,21 +16,21 @@
     @param [in, out] *EqMathCoeffs the pointer to CoeffAndRoots struct
     @see PrecisionInput()
 */
-void CoeffInput (struct CoeffAndRoots *EqMathCoeffs);
+void CoeffInput (struct CoeffAndRoots *const EqMathCoeffs);
 
 /**
     Function that reads user's input precision.
     @param [in, out] *EqMathCoeffs the pointer to CoeffAndRoots struct
     @see CoeffInput()
 */
-void PrecisionInput (struct CoeffAndRoots *EqMathCoeffs);
+void PrecisionInput (struct CoeffAndRoots *const EqMathCoeffs);
 
 /**
     Function that reads user's input answer after equation was solved.
     @param [in, out] otvet array to read user's answer into.
     @return \p YES if user want to continue, \p NO if input is incorrect or user want to leave
 */
-enum UserAnswer OtvetInput (char *otvet);
+enum UserAnswer OtvetInput (char *const otvet);
 
 /**
     Function that clears stdin.
@@ -50,7 +50,7 @@ int VvodCheck (void);
     @param [in] *EqMathCoeffs the pointer to CoeffAndRoots struct
     @see OtvetInput()
 */
-void EqOutput (struct CoeffAndRoots *EqMathCoeffs);
+void EqOutput (struct CoeffAndRoots *const EqMathCoeffs);
 
 /**
     @}

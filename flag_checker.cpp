@@ -18,7 +18,7 @@ AllFlags sFlagsForCmd[NUM_OF_FLAGS] {
     {"--help"     , "-h", HelpOutput  , &HelpArgs}
 };
 
-void FlagChecker (char *argv[], int argc, AllFlags *FlagsForCmd) {
+void FlagChecker (char *const argv[], const int argc, AllFlags *const FlagsForCmd) {
 
     assert (argv != NULL);
     assert (FlagsForCmd != NULL);

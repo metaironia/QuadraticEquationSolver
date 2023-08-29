@@ -18,7 +18,7 @@ const int ALL_TESTS_MARK = 'a';
           else user's answer will be written to a \p user_input.
     @return 1 if input was successful, 0 if not.
 */
-int UnitTestInput (int *test_number, char *user_input);
+int UnitTestInput (int *const test_number, char *const user_input);
 
 /**
     @}

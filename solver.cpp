@@ -7,7 +7,7 @@
 
 extern CoeffAndRoots Quadr;
 
-enum RootsQuantity EqSolver (struct CoeffAndRoots *EqMathCoeffs) {
+enum RootsQuantity EqSolver (struct CoeffAndRoots *const EqMathCoeffs) {
 
     assert (EqMathCoeffs != NULL);
 
@@ -20,20 +20,19 @@ enum RootsQuantity EqSolver (struct CoeffAndRoots *EqMathCoeffs) {
         return LinearSolve (EqMathCoeffs);
 
         assert (isfinite (EqMathCoeffs -> x_1));
-
     }
 
     double discr = (EqMathCoeffs -> b)*(EqMathCoeffs -> b) -
-                        4*(EqMathCoeffs -> a)*(EqMathCoeffs -> c);
+                 4*(EqMathCoeffs -> a)*(EqMathCoeffs -> c);
 
     if (IsDoubleBigger (discr, 0)) {
 
         double sqrt_discr = sqrt (discr);
 
-        (EqMathCoeffs -> x_1) = (-(EqMathCoeffs -> b)  - sqrt_discr) /
+        (EqMathCoeffs -> x_1) = (-(EqMathCoeffs -> b) - sqrt_discr) /
                                                          (2*(EqMathCoeffs -> a));
 
-        (EqMathCoeffs -> x_2) = (-(EqMathCoeffs -> b)  + sqrt_discr) /
+        (EqMathCoeffs -> x_2) = (-(EqMathCoeffs -> b) + sqrt_discr) /
                                                          (2*(EqMathCoeffs -> a));
 
         assert (isfinite (EqMathCoeffs -> x_1));
@@ -53,7 +52,7 @@ enum RootsQuantity EqSolver (struct CoeffAndRoots *EqMathCoeffs) {
         return NO_ROOTS;
 }
 
-enum RootsQuantity LinearSolve (struct CoeffAndRoots *EqMathCoeffs) {
+enum RootsQuantity LinearSolve (struct CoeffAndRoots *const EqMathCoeffs) {
 
     assert (EqMathCoeffs != NULL);
 

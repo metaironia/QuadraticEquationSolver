@@ -13,10 +13,12 @@
 extern CoeffAndRoots Quadr;
 
 CoeffAndRoots EqMathCoeffsReff[MAX_NUMBER_TEST] {
-    {INFINITE_ROOTS, 5, .a = 0  ,  0  ,  0  , NAN , NAN},
-    {ONE_ROOT      , 5, .a = 1  ,  2  ,  1  , -1  , NAN},
-    {TWO_ROOTS     , 5, .a = 1  ,  1  ,  0  , -1  , 0  },
-    {NO_ROOTS      , 5, .a = 1  ,  1  ,  1  , NAN , NAN}
+    {INFINITE_ROOTS, 1, .a = 0  ,  0  ,  0  ,  NAN , NAN},
+    {ONE_ROOT      , 1, .a = 1  ,  2  ,  1  ,  -1  , NAN},
+    {TWO_ROOTS     , 1, .a = 1  ,  1  ,  0  ,  -1  ,  0 },
+    {NO_ROOTS      , 1, .a = 1  ,  1  ,  1  ,  NAN , NAN},
+    {TWO_ROOTS     , 1, .a = 2  , -1  , -1  , -0.5 ,  1 },
+    {TWO_ROOTS     , 1, .a = 1  ,  5  ,  6  ,  -3  , -2 },
 };
 
 UnitArgsStruct UnitArgs {
@@ -24,7 +26,7 @@ UnitArgsStruct UnitArgs {
     &Quadr
 };
 
-int UnitTestMain (void *storage) {
+int UnitTestMain (void *const storage) {
 
     assert (storage != NULL);
 
@@ -65,7 +67,7 @@ int UnitTestMain (void *storage) {
     return -1;
 }
 
-void TestOne (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test_state) {
+void TestOne (UnitArgsStruct *arg_storage, const int test_number, UnitTestConsts *const test_state) {
 
     assert (test_state != NULL);
     assert (arg_storage != NULL);
@@ -120,10 +122,10 @@ void TestOne (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test
         }
     }
 
-    UnitTestOutput (arg_storage, test_number, test_state);
+    UnitTestOutput (arg_storage, test_number, *test_state);
 }
 
-void TestAll (UnitArgsStruct *arg_storage, UnitTestConsts *test_state) {
+void TestAll (UnitArgsStruct *const arg_storage, UnitTestConsts *const test_state) {
 
     assert (test_state != NULL);
     assert (arg_storage != NULL);

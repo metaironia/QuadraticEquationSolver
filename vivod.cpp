@@ -8,7 +8,7 @@
 
 extern CoeffAndRoots Quadr;
 
-void EqOutput (struct CoeffAndRoots *EqMathCoeffs) {
+void EqOutput (struct CoeffAndRoots *const EqMathCoeffs) {
 
     assert (EqMathCoeffs != NULL);
 
@@ -31,7 +31,7 @@ void EqOutput (struct CoeffAndRoots *EqMathCoeffs) {
             break;
 
         case INFINITE_ROOTS:
-            printf ("This equation has infinity number of the solutions.\n");
+            printf ("This equation has infinite number of the solutions.\n");
             break;
 
         default:

@@ -4,7 +4,7 @@
 
 HelpArgsStruct HelpArgs {};
 
-int HelpOutput (void *storage) {
+int HelpOutput (void *const storage) {
 
     assert (storage != NULL);
    // HelpArgsStruct *arg_storage;

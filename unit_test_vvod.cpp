@@ -10,7 +10,7 @@
 #include "unit_test_vvod.h"
 #include "vvod_vivod.h"
 
-int UnitTestInput (int *test_number, char *user_input) {
+int UnitTestInput (int *const test_number, char *const user_input) {
 
     assert (test_number != NULL);
     assert (user_input  != NULL);

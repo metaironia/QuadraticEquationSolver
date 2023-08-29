@@ -8,7 +8,7 @@
 
 extern CoeffAndRoots Quadr;
 
-void CoeffInput (struct CoeffAndRoots *EqMathCoeffs) {
+void CoeffInput (struct CoeffAndRoots *const EqMathCoeffs) {
 
     assert (EqMathCoeffs != NULL);
 
@@ -31,8 +31,7 @@ void CoeffInput (struct CoeffAndRoots *EqMathCoeffs) {
                 coeff_status = (Coeffs) (coeff_counter + 1);
                 break;
             }
-
-            if (coeff_counter == COEFF_NUM - 1) // можно ли написать просто без if?
+            else // можно ли написать просто без if?
                 coeff_status = COEFFS_OK;
         }
 
@@ -65,7 +64,7 @@ void CoeffInput (struct CoeffAndRoots *EqMathCoeffs) {
     }
 }
 
-void PrecisionInput (struct CoeffAndRoots *EqMathCoeffs) {
+void PrecisionInput (struct CoeffAndRoots *const EqMathCoeffs) {
 
     assert (EqMathCoeffs != NULL);
 
@@ -97,7 +96,7 @@ void PrecisionInput (struct CoeffAndRoots *EqMathCoeffs) {
     VvodClear();
 }
 
-enum UserAnswer OtvetInput (char *otvet) {
+enum UserAnswer OtvetInput (char *const otvet) {
 
     assert (otvet != NULL);
 
@@ -128,7 +127,6 @@ void VvodClear (void) {
 int VvodCheck (void) {
 
     char symbol = 0;
-
 
     while ((symbol = (char) getchar()) != ENTER) {
 
