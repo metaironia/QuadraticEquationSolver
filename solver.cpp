@@ -60,6 +60,7 @@ enum RootsQuantity LinearSolve (struct CoeffAndRoots *const EqMathCoeffs) {
     assert (isfinite (EqMathCoeffs -> c));
 
     if (IsZero ((EqMathCoeffs -> b))) {
+
         return (IsZero ((EqMathCoeffs -> c)) ? INFINITE_ROOTS : NO_ROOTS);
     }
 

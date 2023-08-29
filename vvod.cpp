@@ -30,8 +30,8 @@ void CoeffInput (struct CoeffAndRoots *const EqMathCoeffs) {
 
                 coeff_status = (Coeffs) (coeff_counter + 1);
                 break;
-            }
-            else
+
+            } else
                 coeff_status = COEFFS_OK;
         }
 
@@ -78,12 +78,15 @@ void PrecisionInput (struct CoeffAndRoots *const EqMathCoeffs) {
            ((EqMathCoeffs -> precision) >= PRECISION_MAX)) {
 
         if (vvod_status_pr) {
+
             fprintf (stderr, RED "Entered number of digits is incorrect! "
                                  "Enter the number of digits once again.\n" NORMAL);
-        }
-        else if ((EqMathCoeffs -> precision) >= PRECISION_MAX)
+
+        } else if ((EqMathCoeffs -> precision) >= PRECISION_MAX)
+
             fprintf (stderr, RED "Entered number of digits is too big! "
                                  "Enter the number of digits once again.\n" NORMAL);
+
         else
             fprintf (stderr, RED "Entered number of digits is incorrect! "
                                  "Enter the number of digits once again.\n" NORMAL);
@@ -108,6 +111,7 @@ enum UserAnswer OtvetInput (char *const otvet) {
         if (otvet[0] == ENTER) return YES;
 
         if (attempts != MAX_ATTEMPTS - 1)
+
             fprintf (stderr, RED "Enter correct input! "
                                  "Remaining attempts: %d\n" NORMAL,
                                   MAX_ATTEMPTS - attempts - 1);
