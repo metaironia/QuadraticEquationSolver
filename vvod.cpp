@@ -31,7 +31,7 @@ void CoeffInput (struct CoeffAndRoots *const EqMathCoeffs) {
                 coeff_status = (Coeffs) (coeff_counter + 1);
                 break;
             }
-            else // можно ли написать просто без if?
+            else
                 coeff_status = COEFFS_OK;
         }
 
