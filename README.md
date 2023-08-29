@@ -21,12 +21,12 @@ To use makefile:
 
 Getting help:
 
-```sh
+```
 $ kvadr [-h|--help]
 ```
 Running tests:
 
-```sh
+```
 $ kvadr [-t|--unit_test]
 ```
 
@@ -37,8 +37,8 @@ kvadr <A> <B> <C> <Prec>
 ```
 
 Examples:
-	kvadr 1 0 -4 2  --- to solve x^2 - 4 = 0         with precision 0.01
-       	kvadr 5 2 -1 3  --- to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001
+`$ kvadr 1 0 -4 2`  --- to solve x^2 - 4 = 0         with precision 0.01
+`$ kvadr 5 2 -1 3`  --- to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001
 
 ## Documentation
 
