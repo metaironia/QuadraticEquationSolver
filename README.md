@@ -1,6 +1,5 @@
+	(c) Sergey Kulagin, 2023
 # Quadratic equation solver
-(c) Sergey Kulagin, 2023
-
 
 This program can solve quadratic equations.
 
