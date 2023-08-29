@@ -8,7 +8,7 @@ This program can solve quadratic equations.
 
 To use makefile:
 - Open the Command Prompt
-- type `$ cd _%folder with this project%_`
+- type `$ cd %project folder%`
 - type `$ make` to make .o and executable file or `$ make clean` to clean .o and executable files
 
 ### Program usage:
@@ -33,11 +33,11 @@ $ kvadr <A> <B> <C> <Prec>
 Examples:
 ```
 $ kvadr 1 0 -4 2  
-> to solve x^2 - 4 = 0         with precision 0.01
+`to solve x^2 - 4 = 0         with precision 0.01`
 ```
 ```
 $ kvadr 5 2 -1 3 
-> to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001`
+`to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001`
 ```
 
 ## Documentation
