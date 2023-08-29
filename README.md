@@ -1,9 +1,18 @@
-	(c) Sergey Kulagin, 2023
 # Quadratic equation solver
 
 This program can solve quadratic equations.
 
-    Usage:
+##Getting started
+
+###Makefile
+
+    To make executable file:
+        make
+
+    To clean .o and executable files:
+        make [clean]
+
+###Program usage:
 
     Getting help:
         kvadr [-h|--help]
@@ -18,14 +27,14 @@ This program can solve quadratic equations.
         kvadr 1 0 -4 2  --- to solve x^2 - 4 = 0         with precision 0.01
         kvadr 5 2 -1 3  --- to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001
 
-#Documents
+##Documentation
 
 To make documentation to this program:
     - run DoxyWizard;
     - Click File -> Open -> choose "Doxyfile" from this project;
     - Click Run -> Run doxygen -> Show HTML input.
 
-#Makefile
+##Makefile
     Usage:
 
     Make executable file:
@@ -38,3 +47,7 @@ To use makefile:
     - Open the Command Prompt
     - type "cd %folder with this project%"
     - type "make" to make .o and executable file or "make clean" to clean .o and executable files
+
+##Author
+	Sergey Kulagin, MIPT 1-year student	
+		
