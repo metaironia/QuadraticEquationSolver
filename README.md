@@ -30,14 +30,16 @@ Solving equation A * x^2 + B * x + C = 0 with `<Prec>` as number of digits after
 $ kvadr <A> <B> <C> <Prec>
 ```
 
-Examples:
+**Examples:**
+
+To solve x^2 - 4 = 0         with precision 0.01
 ```
 $ kvadr 1 0 -4 2  
-`to solve x^2 - 4 = 0         with precision 0.01`
 ```
+
+To solve 5*x^2 + 2*x - 1 = 0 with precision 0.001:
 ```
 $ kvadr 5 2 -1 3 
-`to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001`
 ```
 
 ## Documentation
