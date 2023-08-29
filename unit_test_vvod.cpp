@@ -10,8 +10,6 @@
 #include "unit_test_vvod.h"
 #include "vvod_vivod.h"
 
-extern CoeffAndRoots EqMathCoeffsReff;
-
 int UnitTestInput (int *test_number, char *user_input) {
 
     assert (test_number != NULL);

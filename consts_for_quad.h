@@ -41,6 +41,9 @@ const int ENTER = '\n';
 /// This is mark for SPACE.
 const int SPACE = ' ';
 
+/// This is number of coefficients.
+const int COEFF_NUM = 3;
+
 /**
     This enum contains number of roots of the quadratic equation.
 */
@@ -65,9 +68,10 @@ enum UserAnswer {
 */
 enum Coeffs {
     NO_COEFF = 0,
-    FIRST_COEFF,               ///< This is numeric representation of coefficient A.
-    SECOND_COEFF,              ///< This is numeric representation of coefficient B.
-    THIRD_COEFF                ///< This is numeric representation of coefficient C.
+    FIRST_COEFF_ERR,               ///< This is numeric representation of error in coefficient A.
+    SECOND_COEFF_ERR,              ///< This is numeric representation of error in coefficient B.
+    THIRD_COEFF_ERR,               ///< This is numeric representation of error in coefficient C.
+    COEFFS_OK                      ///< This is numeric representation of successful input of the coefficients.
 };
 
 /**

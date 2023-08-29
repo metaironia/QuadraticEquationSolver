@@ -19,16 +19,26 @@ CoeffAndRoots EqMathCoeffsReff[MAX_NUMBER_TEST] {
     {NO_ROOTS      , 5, .a = 1  ,  1  ,  1  , NAN , NAN}
 };
 
-int UnitTestMain (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef) {
+UnitArgsStruct UnitArgs {
+    EqMathCoeffsReff,
+    &Quadr
+};
 
-    assert (EqMathCoeffs != NULL);
-    assert (EqMathCoeffsRef != NULL);
+int UnitTestMain (void *storage) {
+
+    assert (storage != NULL);
+
+    UnitArgsStruct *arg_storage;
+    arg_storage = (UnitArgsStruct *) storage;
+
+    assert (arg_storage != NULL);
+    assert ((arg_storage -> result_data) != NULL);
+    assert ((arg_storage -> ref_data) != NULL);
 
     int test_number = TEST_NUMBER_NULL;
     char user_input[STR_LEN] = "";
 
     UnitTestConsts test_state = TEST_STATE_NULL;
-
 
     if (!UnitTestInput (&test_number, user_input)) {
 
@@ -43,39 +53,39 @@ int UnitTestMain (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef) {
 
     if (is_correct_str) {
 
-        TestAll (EqMathCoeffs, EqMathCoeffsRef, &test_state);
+        TestAll (arg_storage, &test_state);
         return 0;
 
     } else if (is_correct_test) {
 
-        TestOne (EqMathCoeffs, EqMathCoeffsRef, test_number, &test_state);
+        TestOne (arg_storage, test_number, &test_state);
         return 0;
     }
 
     return -1;
 }
 
-void TestOne (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
-              int test_number, UnitTestConsts *test_state) {
+void TestOne (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test_state) {
 
     assert (test_state != NULL);
-    assert (EqMathCoeffs != NULL);
-    assert (EqMathCoeffsRef != NULL);
+    assert (arg_storage != NULL);
+    assert ((arg_storage -> result_data) != NULL);
+    assert ((arg_storage -> ref_data) != NULL);
     assert (test_number <= MAX_NUMBER_TEST - 1 && test_number >= 0);
 
-    *EqMathCoeffs = {NO_ROOTS, PRECISION_ZERO, NAN, NAN, NAN, NAN, NAN};
+    *(arg_storage -> result_data) = {NO_ROOTS, PRECISION_ZERO, NAN, NAN, NAN, NAN, NAN};
 
-    (EqMathCoeffs -> a) = (EqMathCoeffsRef[test_number].a);
-    (EqMathCoeffs -> b) = (EqMathCoeffsRef[test_number].b);
-    (EqMathCoeffs -> c) = (EqMathCoeffsRef[test_number].c);
+    (arg_storage -> result_data -> a) = (arg_storage -> ref_data[test_number].a);
+    (arg_storage -> result_data -> b) = (arg_storage -> ref_data[test_number].b);
+    (arg_storage -> result_data -> c) = (arg_storage -> ref_data[test_number].c);
 
-    (EqMathCoeffs -> nRoots) = EqSolver (EqMathCoeffs);
+    (arg_storage -> result_data -> nRoots) = EqSolver (arg_storage -> result_data);
 
     *test_state = TEST_FAILED;
 
-    if (((EqMathCoeffs -> nRoots) == (EqMathCoeffsRef[test_number].nRoots)))  {
+    if (((arg_storage -> result_data -> nRoots) == (arg_storage -> ref_data[test_number].nRoots)))  {
 
-        switch (EqMathCoeffs -> nRoots) {
+        switch (arg_storage -> result_data -> nRoots) {
             case NO_ROOTS:
                 *test_state = TEST_OK;
                 break;
@@ -85,19 +95,19 @@ void TestOne (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
                 break;
 
             case ONE_ROOT:
-                if (IsDoublesEqual ((EqMathCoeffs -> x_1),
-                    (EqMathCoeffsRef[test_number].x_1))) {
+                if (IsDoublesEqual ((arg_storage -> result_data -> x_1),
+                    (arg_storage -> ref_data[test_number].x_1))) {
 
                     *test_state = TEST_OK;
                 }
                 break;
 
             case TWO_ROOTS:
-                if (IsDoublesEqual ((EqMathCoeffs -> x_1),
-                    (EqMathCoeffsRef[test_number].x_1))) {
+                if (IsDoublesEqual ((arg_storage -> result_data -> x_1),
+                    (arg_storage -> ref_data[test_number].x_1))) {
 
-                    if (IsDoublesEqual ((EqMathCoeffs -> x_2),
-                        (EqMathCoeffsRef[test_number].x_2))) {
+                    if (IsDoublesEqual ((arg_storage -> result_data -> x_2),
+                        (arg_storage -> ref_data[test_number].x_2))) {
 
                         *test_state = TEST_OK;
                     }
@@ -110,21 +120,21 @@ void TestOne (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
         }
     }
 
-    UnitTestOutput (EqMathCoeffs, EqMathCoeffsRef, test_number, test_state);
+    UnitTestOutput (arg_storage, test_number, test_state);
 }
 
-void TestAll (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
-              UnitTestConsts *test_state) {
+void TestAll (UnitArgsStruct *arg_storage, UnitTestConsts *test_state) {
 
     assert (test_state != NULL);
-    assert (EqMathCoeffs != NULL);
-    assert (EqMathCoeffsRef != NULL);
+    assert (arg_storage != NULL);
+    assert ((arg_storage -> result_data) != NULL);
+    assert ((arg_storage -> ref_data) != NULL);
 
     for (int test_number = 0; test_number < MAX_NUMBER_TEST; test_number++) {
 
-        assert (test_number >= 0 || test_number < MAX_NUMBER_TEST);
+        assert (test_number >= 0 && test_number < MAX_NUMBER_TEST);
 
-        TestOne (EqMathCoeffs, EqMathCoeffsRef, test_number, test_state);
+        TestOne (arg_storage, test_number, test_state);
 
     /*     if (*test_state == TEST_FAILED) {
             break;

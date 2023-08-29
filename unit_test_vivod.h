@@ -12,13 +12,11 @@
 
 /**
     Function that outputs results of unit tests.
-    @param [in, out] *EqMathCoeffs the pointer to CoeffAndRoots struct.
-    @param [in] *EqMathCoeffsRef the pointer to CoeffAndRoots struct with reference data.
+    @param [in, out] *storage the pointer to CoeffAndRoots struct of reference data and CoeffAndRoots struct of result data.
     @param [in] test_number a number of test that user's run.
     @param [in, out] *test_state the pointer to UnitTestConsts struct.
 */
-void UnitTestOutput (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
-                     int test_number, UnitTestConsts *test_state);
+void UnitTestOutput (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test_state);
 
 /**
     @}

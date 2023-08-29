@@ -11,15 +11,19 @@
 */
 
 /**
+    This is the struct with arguments for function HelpOutput().
+*/
+struct HelpArgsStruct {};
+
+/**
     This function shows help.
-    @param [in] *EqMathCoeffs the pointer to CoeffAndRoots struct.
-    @param [in] *EqMathCoeffsRef the pointer to CoeffAndRoots struct with reference data.
-    @note \p *EqMathCoeffs and \p *EqMathCoeffsRef are not used in this function.
+    @param [in] *storage the pointer to struct with required arguments.
+    @note \p *storage is not used in this function.
     @return always 0
     @attention This function has type "int" because of FlagChecker() requires it.
     @see FlagChecker()
 */
-int HelpOutput (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef);
+int HelpOutput (void *storage);
 
 /**
     @}

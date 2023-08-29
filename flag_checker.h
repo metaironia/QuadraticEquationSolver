@@ -20,10 +20,10 @@ const int FLAG_STLEN = 20;
     This struct contains all parameters of the command line arguments.
 */
 struct AllFlags {
-    char flag_name_l[FLAG_STLEN];                           ///< This is the short name of command line argument.
-    char flag_name_sh[FLAG_STLEN];                          ///< This is the long name of command line argument.
-    int (*FlagFunc)(CoeffAndRoots *a, CoeffAndRoots *b);    ///< This is the pointer to the function that corresponding to command line argument.
-   // struct ForFlagsA
+    char flag_name_l[FLAG_STLEN];           ///< This is the short name of command line argument.
+    char flag_name_sh[FLAG_STLEN];          ///< This is the long name of command line argument.
+    int (*FlagFunc) (void *args);           ///< This is the pointer to the function that corresponding to command line argument.
+    void *args_address;                     ///< This is the pointer to the struct with arguments that corresponding to command line argument.
 };
 
 /**

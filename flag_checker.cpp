@@ -10,10 +10,12 @@
 
 extern CoeffAndRoots Quadr;
 extern CoeffAndRoots EqMathCoeffsReff[];
+extern HelpArgsStruct HelpArgs;
+extern UnitArgsStruct UnitArgs;
 
 AllFlags sFlagsForCmd[NUM_OF_FLAGS] {
-    {"--unit_test", "-t", UnitTestMain},
-    {"--help"     , "-h", HelpOutput}
+    {"--unit_test", "-t", UnitTestMain, &UnitArgs},
+    {"--help"     , "-h", HelpOutput  , &HelpArgs}
 };
 
 void FlagChecker (char *argv[], int argc, AllFlags *FlagsForCmd) {
@@ -35,13 +37,13 @@ void FlagChecker (char *argv[], int argc, AllFlags *FlagsForCmd) {
             if (!strcmp (FlagsForCmd[curr_flag].flag_name_l, argv[curr_arg])) {
 
                 flag_read++;
-                FlagsForCmd[curr_flag].FlagFunc (&Quadr, EqMathCoeffsReff);
+                FlagsForCmd[curr_flag].FlagFunc (FlagsForCmd -> args_address);
             }
 
             if (!strcmp (FlagsForCmd[curr_flag].flag_name_sh, argv[curr_arg])) {
 
                 flag_read++;
-                FlagsForCmd[curr_flag].FlagFunc (&Quadr, EqMathCoeffsReff);
+                FlagsForCmd[curr_flag].FlagFunc (FlagsForCmd -> args_address);
             }
         }
     }

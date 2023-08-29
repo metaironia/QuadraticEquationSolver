@@ -6,7 +6,8 @@ CXXFLAGS=-Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equ
 	 -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wno-missing-field-initializers \
 	 -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing \
 	 -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE 
-SOURCES=$(wildcard *.cpp)
+SOURCES= kvadr.cpp vvod.cpp vivod.cpp solver.cpp math_operations.cpp unit_test.cpp unit_test_vvod.cpp unit_test_vivod.cpp \
+	 help_output.cpp flag_checker.cpp 
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=quadratka
 

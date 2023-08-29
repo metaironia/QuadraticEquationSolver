@@ -2,13 +2,13 @@
 
 #include "help_output.h"
 
-extern CoeffAndRoots Quadr;
-extern CoeffAndRoots EqMathCoeffsReff[];
+HelpArgsStruct HelpArgs {};
 
-int HelpOutput (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef) {
+int HelpOutput (void *storage) {
 
-    assert (EqMathCoeffs != NULL);
-    assert (EqMathCoeffsRef != NULL);
+    assert (storage != NULL);
+   // HelpArgsStruct *arg_storage;
+   // arg_storage = (HelpArgsStruct *) storage;
 
     printf (CYAN "This program can solve quadratic equations.\n\n"
 

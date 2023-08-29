@@ -26,40 +26,43 @@ const int STR_LEN = 2;
 /// This number exists to classify input errors in unit tests.
 const int TEST_NUMBER_NULL = -1;
 
+/**
+    This is the struct with arguments for function UnitTestMain().
+*/
+struct UnitArgsStruct {
+    CoeffAndRoots *ref_data;
+    CoeffAndRoots *result_data;
+};
+
 /** \defgroup UnitTestTest Testing functions
     @{
 */
 
 /**
     Main function of the unit tests.
-    @param [in, out] EqMathCoeffs the pointer to CoeffAndRoots struct.
-    @param [in] EqMathCoeffsRef the pointer to CoeffAndRoots struct with reference data.
+    @param [in, out] *storage the pointer to CoeffAndRoots struct of reference data and CoeffAndRoots struct of result data.
     @return 0 if unit test was run, -1 if unit test was not run
     @see UnitTestInput(), TestOne(), TestAll(), UnitTestOutput()
 */
-int UnitTestMain (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef);
+int UnitTestMain (void *storage);
 
 /**
     Function that run one unit test.
-    @param [in, out] *EqMathCoeffs the pointer to CoeffAndRoots struct.
-    @param [in] *EqMathCoeffsRef the pointer to CoeffAndRoots struct with reference data.
+    @param [in, out] *storage the pointer to CoeffAndRoots struct of reference data and CoeffAndRoots struct of result data.
     @param [in] test_number the number of entered unit test.
     @param [in, out] *test_state the pointer to UnitTestConsts struct.
     @see TestAll()
 */
-void TestOne (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
-              int test_number, UnitTestConsts *test_state);
+void TestOne (UnitArgsStruct *arg_storage, int test_number, UnitTestConsts *test_state);
 
 /**
     Function that run all unit tests.
-    @param [in, out] *EqMathCoeffs the pointer to CoeffAndRoots struct.
-    @param [in] *EqMathCoeffsRef the pointer to CoeffAndRoots struct with reference data.
+    @param [in, out] *storage the pointer to CoeffAndRoots struct of reference data and CoeffAndRoots struct of result data.
     @param [in] test_number the number of entered unit test.
     @param [in, out] *test_state the pointer to UnitTestConsts struct.
     @see TestOne()
 */
-void TestAll (CoeffAndRoots *EqMathCoeffs, CoeffAndRoots *EqMathCoeffsRef,
-              UnitTestConsts *test_state);
+void TestAll (UnitArgsStruct *arg_storage, UnitTestConsts *test_state);
 /**
     @}
 */

@@ -12,49 +12,57 @@ void CoeffInput (struct CoeffAndRoots *EqMathCoeffs) {
 
     assert (EqMathCoeffs != NULL);
 
-    printf ("Enter coefficients of the quadratic equation A, B and C:\n");
+    printf ("Enter coefficients of the quadratic equation A, B and C separated by ENTER:\n");
 
-    enum Coeffs coeff_status = FIRST_COEFF;
+    enum Coeffs coeff_status = NO_COEFF;
 
-    int vvod_status_cf = -1;
+    double temp_for_coeff[3] = {NAN, NAN, NAN};
 
-    while (((coeff_status = (Coeffs) (scanf ("%lf %lf %lf", &(EqMathCoeffs -> a),
-           &(EqMathCoeffs -> b), &(EqMathCoeffs -> c)))) != THIRD_COEFF) ||
-           (vvod_status_cf = VvodCheck())) {
+    while (coeff_status != COEFFS_OK) {
 
-    // спросить про enum + 1
+        coeff_status = NO_COEFF;
 
-        if (coeff_status == NO_COEFF) {
-            coeff_status = FIRST_COEFF;
+        for (int coeff_counter = 0; coeff_counter < COEFF_NUM; coeff_counter++) {
+
+            assert (0 <= coeff_counter && coeff_counter < COEFF_NUM);
+
+            if (scanf ("%lf", &temp_for_coeff[coeff_counter]) != 1 || VvodCheck()) {
+
+                coeff_status = (Coeffs) (coeff_counter + 1);
+                break;
+            }
+
+            if (coeff_counter == COEFF_NUM - 1) // можно ли написать просто без if?
+                coeff_status = COEFFS_OK;
         }
 
+        const char* which_coeff = NULL;
+
         switch (coeff_status) {
-            case FIRST_COEFF:
-                fprintf (stderr, RED "First coefficient is incorrect! "
-                                     "Enter the coefficients once again.\n" NORMAL);
-                break;
+            case FIRST_COEFF_ERR:  which_coeff = "First";  break;
+            case SECOND_COEFF_ERR: which_coeff = "Second"; break;
+            case THIRD_COEFF_ERR:  which_coeff = "Third";  break;
 
-            case SECOND_COEFF:
-                fprintf (stderr, RED "Second coefficient is incorrect! "
-                                     "Enter the coefficients once again.\n" NORMAL);
-                break;
-
-            case THIRD_COEFF:
-                fprintf (stderr, RED "Third coefficient is incorrect! "
-                                     "Enter the coefficients once again.\n" NORMAL);
-                break;
-
+            case COEFFS_OK: break;
             case NO_COEFF:
+
             default:
                 fprintf (stderr, RED "Error occurred "
                                      "during input of the coefficient." NORMAL);
                 assert(0);
         }
 
+        if (coeff_status == COEFFS_OK) {
+
+            EqMathCoeffs -> a = temp_for_coeff[0];
+            EqMathCoeffs -> b = temp_for_coeff[1];
+            EqMathCoeffs -> c = temp_for_coeff[2];
+
+        } else
+              fprintf (stderr, RED "%s coefficient is incorrect! "
+                                   "Enter the coefficients once again.\n" NORMAL, which_coeff);
         VvodClear();
     }
-
-    VvodClear();
 }
 
 void PrecisionInput (struct CoeffAndRoots *EqMathCoeffs) {
@@ -89,7 +97,7 @@ void PrecisionInput (struct CoeffAndRoots *EqMathCoeffs) {
     VvodClear();
 }
 
-enum UserAnswer OtvetInput (const char *otvet) {
+enum UserAnswer OtvetInput (char *otvet) {
 
     assert (otvet != NULL);
 
@@ -124,8 +132,11 @@ int VvodCheck (void) {
 
     while ((symbol = (char) getchar()) != ENTER) {
 
-        if (symbol != SPACE)
+        if (symbol != SPACE) {
+
+            ungetc (symbol, stdin);
             return 1;
+        }
     }
 
     ungetc (symbol, stdin);
