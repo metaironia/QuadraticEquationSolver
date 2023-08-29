@@ -34,7 +34,7 @@ Solving equation A * x^2 + B * x + C = 0 with <Prec> as number of digits after d
 
 ```
 kvadr <A> <B> <C> <Prec>
-```sh
+```
 
 Examples:
 	kvadr 1 0 -4 2  --- to solve x^2 - 4 = 0         with precision 0.01
