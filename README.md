@@ -44,7 +44,6 @@ $ kvadr 5 2 -1 3
 
 ## Documentation
 
-To make documentation to this program:
 To make and see documentation to this program:
 - run DoxyWizard;
 - Click File -> Open -> choose "Doxyfile" from this project;
