@@ -6,16 +6,10 @@ This program can solve quadratic equations.
 
 ### Makefile
 
-To make executable file:
-	make
-
-To clean .o and executable files:
-	make [clean]
-
 To use makefile:
 - Open the Command Prompt
-- type "cd %folder with this project%"
-- type "make" to make .o and executable file or "make clean" to clean .o and executable files
+- type `$ cd %folder with this project%`
+- type `$ make` to make .o and executable file or `$ make clean` to clean .o and executable files
 
 ### Program usage:
 
@@ -30,15 +24,15 @@ Running tests:
 $ kvadr [-t|--unit_test]
 ```
 
-Solving equation A * x^2 + B * x + C = 0 with <Prec> as number of digits after decimal dot:
+Solving equation A * x^2 + B * x + C = 0 with `<Prec>` as number of digits after decimal dot:
 
 ```
 kvadr <A> <B> <C> <Prec>
 ```
 
 Examples:
-`$ kvadr 1 0 -4 2`  --- to solve x^2 - 4 = 0         with precision 0.01
-`$ kvadr 5 2 -1 3`  --- to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001
+`$ kvadr 1 0 -4 2`  > to solve x^2 - 4 = 0         with precision 0.01
+`$ kvadr 5 2 -1 3`  > to solve 5*x^2 + 2*x - 1 = 0 with precision 0.001
 
 ## Documentation
 
