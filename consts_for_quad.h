@@ -21,7 +21,7 @@
 const double EPS = 1E-10;
 
 /// This is the max length of string of user's answer.
-const int STLEN = 2;
+const int STRLEN = 2;
 
 /// This is the null precision to classify input errors.
 const int PRECISION_ZERO = 0;

@@ -48,7 +48,9 @@ void CoeffInput (struct CoeffAndRoots *const EqMathCoeffs) {
             default:
                 fprintf (stderr, RED "Error occurred "
                                      "during input of the coefficient." NORMAL);
-                assert(0);
+                assert (0);
+
+             //DED))  assert (ERROR && "Serega is a big mouse");
         }
 
         if (coeff_status == COEFFS_OK) {
@@ -83,7 +85,6 @@ void PrecisionInput (struct CoeffAndRoots *const EqMathCoeffs) {
                                  "Enter the number of digits once again.\n" NORMAL);
 
         } else if ((EqMathCoeffs -> precision) >= PRECISION_MAX)
-
             fprintf (stderr, RED "Entered number of digits is too big! "
                                  "Enter the number of digits once again.\n" NORMAL);
 
@@ -111,7 +112,6 @@ enum UserAnswer OtvetInput (char *const otvet) {
         if (otvet[0] == ENTER) return YES;
 
         if (attempts != MAX_ATTEMPTS - 1)
-
             fprintf (stderr, RED "Enter correct input! "
                                  "Remaining attempts: %d\n" NORMAL,
                                   MAX_ATTEMPTS - attempts - 1);

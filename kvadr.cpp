@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 #include <assert.h>
 
@@ -12,7 +13,7 @@ extern AllFlags sFlagsForCmd;
 
 struct CoeffAndRoots Quadr = {NO_ROOTS, PRECISION_ZERO, NAN, NAN, NAN, NAN, NAN};
 
-int main (int argc, char *argv[]) {
+int main (const int argc, const char **argv) {
 
     if (argc != FIRST_ARG) {
 
@@ -20,7 +21,7 @@ int main (int argc, char *argv[]) {
         return 0;
     }
 
-    char otvet[STLEN] = {0};
+    char otvet[STRLEN] = {0};
 
     enum UserAnswer num_answer = YES;
 

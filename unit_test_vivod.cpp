@@ -50,7 +50,8 @@ void UnitTestOutput (UnitArgsStruct *const arg_storage, const int test_number, U
         case TEST_STATE_NULL:
             fprintf (stderr, RED "Test state is null." NORMAL);
             assert(0);
-            /*fallthrough*/
+            [[fallthrough]]
+
         default:
             assert(0);
     }

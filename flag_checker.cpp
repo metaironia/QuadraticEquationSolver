@@ -8,8 +8,6 @@
 #include "help_output.h"
 #include "flag_checker.h"
 
-extern CoeffAndRoots Quadr;
-extern CoeffAndRoots EqMathCoeffsReff[];
 extern HelpArgsStruct HelpArgs;
 extern UnitArgsStruct UnitArgs;
 
@@ -18,7 +16,7 @@ AllFlags sFlagsForCmd[NUM_OF_FLAGS] {
     {"--help"     , "-h", HelpOutput  , &HelpArgs}
 };
 
-void FlagChecker (char *const argv[], const int argc, AllFlags *const FlagsForCmd) {
+void FlagChecker (const char *argv[], const int argc, AllFlags *const FlagsForCmd) {
 
     assert (argv != NULL);
     assert (FlagsForCmd != NULL);
@@ -34,13 +32,13 @@ void FlagChecker (char *const argv[], const int argc, AllFlags *const FlagsForCm
 
             assert (curr_flag >= 0 && curr_flag < NUM_OF_FLAGS);
 
-            if (!strcmp (FlagsForCmd[curr_flag].flag_name_l, argv[curr_arg])) {
+            if (!strcmp (FlagsForCmd[curr_flag].flag_name_long, argv[curr_arg])) {
 
                 flag_read++;
                 FlagsForCmd[curr_flag].FlagFunc (FlagsForCmd -> args_address);
             }
 
-            if (!strcmp (FlagsForCmd[curr_flag].flag_name_sh, argv[curr_arg])) {
+            if (!strcmp (FlagsForCmd[curr_flag].flag_name_short, argv[curr_arg])) {
 
                 flag_read++;
                 FlagsForCmd[curr_flag].FlagFunc (FlagsForCmd -> args_address);

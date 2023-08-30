@@ -51,7 +51,6 @@ int UnitTestInput (int *const test_number, char *const user_input) {
         }
 
         if (attempts != MAX_ATTEMPTS - 1)
-
             fprintf (stderr, RED "Enter the correct input! "
                                  "Remaining attempts: %d\n" NORMAL,
                                   MAX_ATTEMPTS - attempts - 1);
